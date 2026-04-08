@@ -1,0 +1,4 @@
+.env
+chroma_db/
+tagged_description.txt
+books_Cleaned.csv
