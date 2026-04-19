@@ -2,7 +2,7 @@
 
 > *Find books by meaning, not just keywords.*
 
-[![HuggingFace Space](https://img.shields.io/badge/🤗%20HuggingFace-Space-yellow)](https://huggingface.co/spaces/Avik128/BookSense)
+[![HuggingFace Space](https://img.shields.io/badge/🤗%20HuggingFace-Space-yellow)](https://huggingface.co/spaces/Avik128/BookRecomenda)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![LangChain](https://img.shields.io/badge/LangChain-0.1%2B-green)](https://www.langchain.com/)
 [![Gradio](https://img.shields.io/badge/Gradio-4.x-orange)](https://gradio.app/)
@@ -11,8 +11,7 @@
 
 ## 🌐 Live Demo
 
-> 🚀 **Deployed on HuggingFace Spaces:** [https://huggingface.co/spaces/Avik128/BookSense](https://huggingface.co/spaces/Avik128/BookSense)
-> *(Link will be updated once deployment is complete)*
+[![HuggingFace Space](https://img.shields.io/badge/🤗%20HuggingFace-Space-yellow)](https://huggingface.co/spaces/Avik128/BookRecomenda)
 
 ---
 
