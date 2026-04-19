@@ -397,4 +397,4 @@ with gr.Blocks(css=custom_css, theme=gr.themes.Base()) as dashboard:
     )
 
 if __name__ == "__main__":
-    dashboard.launch()
+    dashboard.launch(share=True)
