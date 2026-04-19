@@ -2,3 +2,5 @@
 chroma_db/
 tagged_description.txt
 books_Cleaned.csv
+books_with_categories.csv
+books_with_emotions.csv
