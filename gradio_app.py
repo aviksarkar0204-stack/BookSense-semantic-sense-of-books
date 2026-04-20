@@ -96,262 +96,211 @@ categories = ["All"] + sorted(books["simple_categories"].dropna().unique().tolis
 tones = ["All", "Happy", "Surprising", "Angry", "Suspenseful", "Sad"]
 
 custom_css = """
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
-*, *::before, *::after { box-sizing: border-box; }
+/* ── Global ── */
+* { box-sizing: border-box; }
 
-:root {
-    --bg:        #0b0c10;
-    --surface:   #13141a;
-    --card:      #1c1e27;
-    --border:    rgba(255,255,255,0.07);
-    --gold:      #d4a847;
-    --gold-dim:  rgba(212,168,71,0.15);
-    --text:      #edeaf3;
-    --muted:     #7a7890;
-    --radius:    14px;
-}
-
-body, .gradio-container {
-    background: var(--bg) !important;
-    font-family: 'Jost', sans-serif !important;
-    color: var(--text) !important;
-}
-
-/* Ambient glow background */
 .gradio-container {
-    background:
-        radial-gradient(ellipse 70% 40% at 15% 5%, rgba(212,168,71,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 35% at 85% 85%, rgba(91,188,176,0.05) 0%, transparent 55%),
-        #0b0c10 !important;
+    background: #0d0e14 !important;
+    font-family: 'Jost', sans-serif !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
 }
 
 /* ── Hero ── */
-#booksense-hero {
+.bk-hero {
     text-align: center;
-    padding: 4.5rem 2rem 3rem;
-    position: relative;
+    padding: 3rem 1rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 2rem;
 }
 
-#booksense-hero::after {
-    content: '';
-    display: block;
-    width: 180px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 2.5rem auto 0;
-}
-
-.hero-eyebrow {
-    font-size: 0.68rem;
-    font-weight: 500;
+.bk-eyebrow {
+    font-size: 0.65rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.2rem;
+    color: #d4a847;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
 }
 
-.hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 8vw, 6rem);
+.bk-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 4rem;
     font-weight: 300;
+    color: #edeaf3;
     line-height: 1;
-    color: var(--text);
-    margin-bottom: 1.2rem;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
 }
 
-.hero-title em {
-    color: var(--gold);
+.bk-title em {
+    color: #d4a847;
     font-style: italic;
     font-weight: 600;
 }
 
-.hero-sub {
-    font-size: 0.97rem;
+.bk-rule {
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4a847, transparent);
+    margin: 1.2rem auto 1rem;
+}
+
+.bk-sub {
+    color: #7a7890;
+    font-size: 0.95rem;
     font-weight: 300;
-    color: var(--muted);
-    max-width: 440px;
+    line-height: 1.7;
+    max-width: 420px;
     margin: 0 auto;
-    line-height: 1.8;
 }
 
 /* ── Search card ── */
-#search-panel {
-    background: var(--surface) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 20px !important;
-    padding: 2rem 2.2rem !important;
-    margin: 0 auto 3rem !important;
-    box-shadow:
-        0 25px 70px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.04) !important;
-    position: relative;
+.bk-card {
+    background: #13141a !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    border-radius: 18px !important;
+    padding: 1.8rem !important;
+    margin-bottom: 2rem !important;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5) !important;
 }
 
-#search-panel::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 15%; right: 15%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(212,168,71,0.4), transparent);
+/* ── All input/textarea/select elements ── */
+.gradio-container input,
+.gradio-container textarea,
+.gradio-container select {
+    background: #1c1e27 !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 10px !important;
+    color: #edeaf3 !important;
+    font-family: 'Jost', sans-serif !important;
+    font-size: 0.93rem !important;
+    font-weight: 300 !important;
 }
 
-/* Labels */
-label > span {
+.gradio-container input:focus,
+.gradio-container textarea:focus {
+    border-color: rgba(212,168,71,0.5) !important;
+    box-shadow: 0 0 0 3px rgba(212,168,71,0.07) !important;
+    outline: none !important;
+}
+
+/* ── Labels ── */
+.gradio-container label > span,
+.gradio-container .label-wrap span {
     font-family: 'Jost', sans-serif !important;
     font-size: 0.68rem !important;
     font-weight: 600 !important;
     letter-spacing: 0.2em !important;
     text-transform: uppercase !important;
-    color: var(--muted) !important;
+    color: #7a7890 !important;
 }
 
-/* Inputs */
-textarea, input[type="text"] {
-    background: var(--card) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: var(--radius) !important;
-    color: var(--text) !important;
-    font-family: 'Jost', sans-serif !important;
-    font-size: 0.95rem !important;
-    font-weight: 300 !important;
-    transition: border-color 0.2s, box-shadow 0.2s !important;
-}
-
-textarea:focus, input:focus {
-    border-color: rgba(212,168,71,0.45) !important;
-    box-shadow: 0 0 0 3px rgba(212,168,71,0.07) !important;
-    outline: none !important;
-}
-
-/* Dropdowns */
-select {
-    background: var(--card) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: var(--radius) !important;
-    color: var(--text) !important;
-    font-family: 'Jost', sans-serif !important;
-    font-size: 0.9rem !important;
-}
-
-/* Button */
-#find-btn {
+/* ── Button ── */
+.gradio-container button.primary,
+.gradio-container button[variant="primary"] {
     background: linear-gradient(135deg, #d4a847, #b87d30) !important;
     border: none !important;
-    border-radius: var(--radius) !important;
+    border-radius: 10px !important;
     color: #080810 !important;
     font-family: 'Jost', sans-serif !important;
     font-size: 0.82rem !important;
     font-weight: 700 !important;
     letter-spacing: 0.15em !important;
     text-transform: uppercase !important;
-    padding: 0.9rem 1.5rem !important;
-    width: 100% !important;
-    margin-top: 1.7rem !important;
-    cursor: pointer !important;
-    box-shadow: 0 6px 24px rgba(212,168,71,0.3) !important;
-    transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1) !important;
+    box-shadow: 0 4px 20px rgba(212,168,71,0.3) !important;
+    transition: all 0.2s ease !important;
+    min-height: 44px !important;
 }
 
-#find-btn:hover {
-    transform: translateY(-3px) scale(1.02) !important;
-    box-shadow: 0 12px 36px rgba(212,168,71,0.45) !important;
+.gradio-container button.primary:hover,
+.gradio-container button[variant="primary"]:hover {
+    filter: brightness(1.1) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 28px rgba(212,168,71,0.45) !important;
 }
 
-#find-btn:active {
-    transform: translateY(0) scale(0.98) !important;
-}
-
-/* Results divider */
-#results-divider {
+/* ── Divider ── */
+.bk-divider {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
-    margin: 0 auto 1.8rem;
-    padding: 0 0.5rem;
+    gap: 1rem;
+    margin: 0 0 1.5rem;
 }
 
-.div-line {
+.bk-divider-line {
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    background: rgba(255,255,255,0.06);
 }
 
-.div-label {
+.bk-divider-label {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-style: italic;
-    color: var(--gold);
-    font-weight: 400;
+    color: #d4a847;
     white-space: nowrap;
 }
 
-/* Gallery */
-.gr-gallery { background: transparent !important; border: none !important; }
-
-.gallery-item {
-    border-radius: 10px !important;
+/* ── Gallery ── */
+.gradio-container .gallery-item,
+.gradio-container [data-testid="gallery"] > div > div {
+    border-radius: 8px !important;
     overflow: hidden !important;
-    border: 1px solid var(--border) !important;
-    background: var(--card) !important;
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease !important;
+    border: 1px solid rgba(255,255,255,0.07) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.gallery-item:hover {
-    transform: translateY(-8px) scale(1.025) !important;
-    box-shadow:
-        0 24px 60px rgba(0,0,0,0.7),
-        0 0 0 1px rgba(212,168,71,0.25) !important;
+.gradio-container .gallery-item:hover,
+.gradio-container [data-testid="gallery"] > div > div:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(212,168,71,0.2) !important;
 }
 
-.gallery-item img {
-    object-fit: cover !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-
-/* Footer */
-#booksense-footer {
+/* ── Footer ── */
+.bk-footer {
     text-align: center;
-    padding: 2rem 1rem 3rem;
-    color: var(--muted);
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    border-top: 1px solid var(--border);
+    padding: 1.5rem;
     margin-top: 2rem;
+    color: #4a4860;
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-footer, .show-api { display: none !important; }
+footer, .show-api, .built-with { display: none !important; }
 
-/* Scrollbar */
+/* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
 """
 
 with gr.Blocks(css=custom_css, theme=gr.themes.Base()) as dashboard:
 
+    # Hero
     gr.HTML("""
-    <div id="booksense-hero">
-        <div class="hero-eyebrow">✦ &nbsp; Semantic Discovery &nbsp; ✦</div>
-        <h1 class="hero-title">Book<em>Sense</em></h1>
-        <p class="hero-sub">
-            Describe a feeling, a world, or a story —<br>
-            and we'll find books that match the meaning behind your words.
-        </p>
+    <div class="bk-hero">
+        <div class="bk-eyebrow">✦ &nbsp; Semantic Discovery &nbsp; ✦</div>
+        <h1 class="bk-title">Book<em>Sense</em></h1>
+        <div class="bk-rule"></div>
+        <p class="bk-sub">Describe a feeling, a world, or a story —<br>
+        and we'll find books that match the meaning behind your words.</p>
     </div>
     """)
 
-    with gr.Group(elem_id="search-panel"):
-        with gr.Row():
+    # Search card
+    with gr.Group(elem_classes="bk-card"):
+        with gr.Row(equal_height=True):
             user_query = gr.Textbox(
                 label="What kind of book are you looking for?",
                 placeholder="e.g., A haunting story about grief and memory in post-war Japan...",
                 lines=3,
                 scale=3,
             )
-            with gr.Column(scale=1, min_width=210):
+            with gr.Column(scale=1, min_width=180):
                 category_dropdown = gr.Dropdown(
                     choices=categories,
                     label="Category",
@@ -364,17 +313,19 @@ with gr.Blocks(css=custom_css, theme=gr.themes.Base()) as dashboard:
                 )
                 submit_button = gr.Button(
                     "✦  Discover Books",
-                    elem_id="find-btn",
+                    variant="primary",
                 )
 
+    # Divider
     gr.HTML("""
-    <div id="results-divider">
-        <div class="div-line"></div>
-        <div class="div-label">Curated for you</div>
-        <div class="div-line"></div>
+    <div class="bk-divider">
+        <div class="bk-divider-line"></div>
+        <div class="bk-divider-label">Curated for you</div>
+        <div class="bk-divider-line"></div>
     </div>
     """)
 
+    # Gallery
     output = gr.Gallery(
         label="",
         columns=8,
@@ -384,8 +335,9 @@ with gr.Blocks(css=custom_css, theme=gr.themes.Base()) as dashboard:
         show_label=False,
     )
 
+    # Footer
     gr.HTML("""
-    <div id="booksense-footer">
+    <div class="bk-footer">
         BookSense &nbsp;·&nbsp; Semantic Recommendations &nbsp;·&nbsp; Powered by all-MiniLM-L6-v2
     </div>
     """)
@@ -397,4 +349,4 @@ with gr.Blocks(css=custom_css, theme=gr.themes.Base()) as dashboard:
     )
 
 if __name__ == "__main__":
-    dashboard.launch(share=True)
+    dashboard.launch()
